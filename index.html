@@ -29,10 +29,10 @@
         .subtitle { text-align: center; font-size: 14px; color: #666; margin-bottom: 40px; border-bottom: 2px solid #222; padding-bottom: 20px; }
         
         .form-group { margin-bottom: 25px; line-height: 1.8; font-size: 16px; }
-        input[type="text"], input[type="number"], input[type="date"], input[type="time"] { 
+        input[type="text"], input[type="number"], input[type="date"] { 
             border: 1px solid #ccc; border-radius: 6px; padding: 8px 10px; font-size: 15px; outline: none; background: #f9f9f9; transition: 0.3s; 
         }
-        input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, input[type="time"]:focus { 
+        input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus { 
             border-color: #4a90e2; background: #fff; box-shadow: 0 0 5px rgba(74, 144, 226, 0.3); 
         }
         input[type="checkbox"] { transform: scale(1.3); margin-right: 8px; accent-color: #4a90e2; }
@@ -43,7 +43,7 @@
         .highlight-box { background-color: #fffbeb; border: 2px solid #fde047; border-radius: 12px; padding: 20px; }
         .highlight-box strong { color: #92400e; font-size: 17px; display: flex; align-items: center; gap: 5px; }
         
-        /* 8번, 9번 회색 박스 수정 (확인 체크박스 추가) */
+        /* 8번, 9번 회색 박스 수정 */
         .gray-box { background-color: #f8f9fa; border-radius: 10px; padding: 20px; font-size: 14px; line-height: 1.7; color: #4b5563; margin-top: 30px; display: flex; flex-direction: column; }
         .gray-box-content { margin-bottom: 15px; }
         .gray-box-check { border-top: 1px dashed #ccc; padding-top: 15px; text-align: right; }
@@ -100,6 +100,10 @@
         .app-footer strong { color: #555; }
 
         .hide-on-capture { /* 캡처 시 숨길 클래스 */ }
+        
+        /* 모바일용 줄바꿈 보조 */
+        .mobile-break { display: none; }
+        @media (max-width: 600px) { .mobile-break { display: block; margin-bottom: 8px; } }
     </style>
 </head>
 <body>
@@ -112,7 +116,7 @@
         <div class="icon">📜</div>
         <div>
             <h3>왜 써야하나요?</h3>
-            <p>근로계약서는 임금, 근로시간 등 핵심 근로조건을 명확히 정하는 것으로, <u>근로자와 사용자(고용주) 모두의 권리보호</u>를 위해 반드시 필요합니다.</p>
+            <p>근로계약서는 임금, 근로시간 등 핵심 근로조건을 명확히 정하는 것으로, <u>근로자와 사용자 모두의 권리보호</u>를 위해 반드시 필요합니다.</p>
         </div>
     </div>
 
@@ -120,7 +124,7 @@
         <div class="icon">💻</div>
         <div>
             <h3>근로계약서를 쓰지 않으면?</h3>
-            <p>사용자(고용주)가 근로계약을 서면으로 체결하고 이를 교부하지 않으면 <u>500만원 이하 벌금</u>이 부과되며, 만약 기간제·단시간근로자인 경우는 500만원 이하의 과태료 처분을 받을 수 있습니다.</p>
+            <p>사용자가 근로계약을 서면으로 체결하고 이를 교부하지 않으면 <u>500만원 이하 벌금</u>이 부과되며, 만약 기간제·단시간근로자인 경우는 500만원 이하의 과태료 처분을 받을 수 있습니다.</p>
         </div>
     </div>
 
@@ -144,7 +148,7 @@
         <div class="subtitle">※ 근로기준법 제66조, 제67조, 제69조 규정을 준수합니다.</div>
         
         <div class="input-inline">
-            <input type="text" id="employer" placeholder="사용자(고용주)명" style="width: 150px;" data-tip="사장님, 즉 사용자(고용주)의 이름을 적어주세요."> (이하 "사용자(고용주)"라 함)과(와) 
+            <input type="text" id="employer" placeholder="사용자명" style="width: 150px;" data-tip="사장님, 즉 사용자의 이름을 적어주세요."> (이하 "사용자"라 함)과(와) 
             <input type="text" id="employee" placeholder="근로자 이름" style="width: 120px;" data-tip="여러분의 이름(근로자)을 적어주세요."> (이하 "근로자"라 함)은 다음과 같이 근로계약을 체결한다.
         </div>
 
@@ -154,7 +158,7 @@
 
         <div class="form-group">
             <strong>2. 근무장소 :</strong><br>
-            <input type="text" id="location" class="full-width" placeholder="예: ㅇㅇ이네 고기상회, ㅇㅇ카페, ㅇㅇ오락실 등 사용자(고용주)가 설정합니다." data-tip="실제로 일하게 될 장소(가게 이름과 지점)를 구체적으로 적어주세요.">
+            <input type="text" id="location" class="full-width" placeholder="예: ㅇㅇ이네 고깃집, ㅇㅇ카페, ㅇㅇ영화관 등 사용자가 설정합니다." data-tip="실제로 일하게 될 장소(가게 이름과 지점)를 구체적으로 적어주세요.">
         </div>
 
         <div class="form-group">
@@ -162,10 +166,13 @@
             <input type="text" id="task" class="full-width" placeholder="예: 매장 계산 및 상품 진열, 음료 제조, 서빙, 화장실 청소 등" data-tip="어떤 일을 하게 되는지 명시해야 부당한 업무 지시를 막을 수 있어요.">
         </div>
 
+        <!-- 4번 항목: 안드로이드 시계 위젯 문제를 해결하기 위해 텍스트(숫자) 직접 입력 방식으로 변경 -->
         <div class="form-group">
             <strong>4. 소정근로시간 :</strong><br>
-            <input type="time" id="time-start" data-tip="청소년은 하루 7시간, 일주일에 35시간을 초과하여 일할 수 없어요!"> 부터 
-            <input type="time" id="time-end" data-tip="퇴근 시간을 정확히 적어주세요."> 까지<br>
+            <input type="number" id="start-hour" placeholder="09" min="0" max="23" style="width: 55px; text-align: center;" data-tip="청소년은 하루 최대 8시간까지만 일할 수 있어요!"> 시 
+            <input type="number" id="start-min" placeholder="00" min="0" max="59" style="width: 55px; text-align: center;"> 분 부터 <span class="mobile-break"></span>
+            <input type="number" id="end-hour" placeholder="17" min="0" max="23" style="width: 55px; text-align: center;" data-tip="퇴근 시간을 정확히 숫자로 적어주세요."> 시 
+            <input type="number" id="end-min" placeholder="00" min="0" max="59" style="width: 55px; text-align: center;"> 분 까지<br>
             <span style="font-size: 15px; color: #555;">(휴게시간 : <input type="number" id="rest-time" placeholder="60" style="width: 60px; text-align: center;" data-tip="4시간 이상 근무 시 30분, 8시간 이상 시 1시간의 휴게시간이 법적으로 보장됩니다."> 분 부여)</span>
         </div>
 
@@ -190,10 +197,9 @@
             <label><input type="checkbox" class="chk-insurance" id="ins-4"> 건강보험</label>
         </div>
 
-        <!-- 8, 9번 항목 기능 개선 (확인함 체크) -->
         <div class="gray-box">
             <div class="gray-box-content">
-                <strong>8. 근로계약서 교부 :</strong> 사용자(고용주)는 계약 체결과 동시에 본 계약서를 사본하여 근로자의 교부 요구와 관계없이 근로자에게 교부함 (근로기준법 제17조, 제67조).<br><br>
+                <strong>8. 근로계약서 교부 :</strong> 사용자는 계약 체결과 동시에 본 계약서를 사본하여 근로자의 교부 요구와 관계없이 근로자에게 교부함 (근로기준법 제17조, 제67조).<br><br>
                 <strong>9. 기타 :</strong> 이 계약에 정함이 없는 사항은 근로기준법령에 의함.
             </div>
             <div class="gray-box-check">
@@ -204,7 +210,7 @@
         </div>
 
         <div class="signature-box">
-            <div>(사용자(고용주)) 서명: <input type="text" id="sign-employer" class="sign-input" placeholder="이름 입력" data-tip="사용자(고용주)의 이름을 타이핑하여 서명을 대신합니다."></div>
+            <div>(사용자) 서명: <input type="text" id="sign-employer" class="sign-input" placeholder="이름 입력" data-tip="사용자의 이름을 타이핑하여 서명을 대신합니다."></div>
             <div>(근로자) 서명: <input type="text" id="sign-employee" class="sign-input" placeholder="이름 입력" data-tip="여러분의 이름을 타이핑하여 서명을 완료하세요."></div>
         </div>
 
@@ -229,14 +235,13 @@
                 </div>
             </div>
 
-            <!-- 항목 리스트 (총 8개로 증가) -->
-            <div class="check-item status-yellow" id="status-name"><span class="check-icon">⚠️</span><span>사용자(고용주)명과 근로자 성명을 정확히 입력하세요.</span></div>
+            <!-- 항목 리스트 -->
+            <div class="check-item status-yellow" id="status-name"><span class="check-icon">⚠️</span><span>사용자명과 근로자 성명을 정확히 입력하세요.</span></div>
             <div class="check-item status-yellow" id="status-detail"><span class="check-icon">⚠️</span><span>근무장소와 상세 업무 내용을 작성해주세요.</span></div>
             <div class="check-item status-yellow" id="status-time"><span class="check-icon">⚠️</span><span>근로시간 및 휴게시간을 입력하세요.</span></div>
             <div class="check-item status-red" id="status-wage"><span class="check-icon">🚨</span><span>2026년 최저시급 준수 여부를 확인하세요.</span></div>
             <div class="check-item status-red" id="status-docs"><span class="check-icon">🚨</span><span>가족관계증명서와 친권자 동의서 여부를 확인하세요.</span></div>
             <div class="check-item status-red" id="status-ins"><span class="check-icon">🚨</span><span>4대 사회보험 가입을 확인하세요.</span></div>
-            <!-- 새로 추가된 8,9번 확인 리포트 요소 -->
             <div class="check-item status-yellow" id="status-confirm"><span class="check-icon">⚠️</span><span>계약서 교부 및 기타 사항을 확인해주세요.</span></div>
             <div class="check-item status-yellow" id="status-sign"><span class="check-icon">⚠️</span><span>하단 서명을 완료해주세요.</span></div>
 
@@ -255,10 +260,10 @@
         </div>
     </div>
 
-    <!-- 🌟 저작권 표시 푸터 영역 (선생님 & AI 공동 제작) -->
+    <!-- 🌟 저작권 표시 푸터 영역 -->
     <div class="app-footer hide-on-capture">
-        <strong>ⓒ 2026 배곧해솔중학교 교사 황영헌 제작. All rights reserved.</strong><br>
-        본 웹앱은 고용노동부의 자료를 참고하여 청소년 노동 인권 보호를 위한 교육용 목적으로 개발되었습니다.
+        <strong>ⓒ 2026 배곧해솔중학교 교사 황영헌 & AI 근로감독관 공동 기획·제작. All rights reserved.</strong><br>
+        본 웹앱은 청소년 노동 인권 보호를 위한 교육용 목적으로 개발되었습니다.
     </div>
 </div>
 
@@ -303,15 +308,15 @@
         reportContent.style.display = 'flex';
         
         let passedChecks = 0;
-        const totalChecks = 8; // 총 항목 7개 -> 8개로 변경
+        const totalChecks = 8; 
 
         // 1. 이름
         const emp = document.getElementById('employer').value;
         const worker = document.getElementById('employee').value;
         if(emp.trim() !== '' && worker.trim() !== '') {
-            setStatus('status-name', 'green', '사용자(고용주) 및 근로자 성명 입력 완료'); passedChecks++;
+            setStatus('status-name', 'green', '사용자 및 근로자 성명 입력 완료'); passedChecks++;
         } else {
-            setStatus('status-name', 'yellow', '사용자(고용주)명과 근로자 성명이 비어있습니다.');
+            setStatus('status-name', 'yellow', '사용자명과 근로자 성명이 비어있습니다.');
         }
 
         // 2. 장소/업무
@@ -323,23 +328,29 @@
             setStatus('status-detail', 'yellow', '근무장소 또는 업무 내용이 비어있습니다.');
         }
 
-        // 3. 근로시간 및 휴게시간
-        const tStart = document.getElementById('time-start').value;
-        const tEnd = document.getElementById('time-end').value;
+        // 3. 근로시간 및 휴게시간 (로직 강화)
+        const sHour = document.getElementById('start-hour').value;
+        const sMin = document.getElementById('start-min').value;
+        const eHour = document.getElementById('end-hour').value;
+        const eMin = document.getElementById('end-min').value;
         const restValue = document.getElementById('rest-time').value;
 
-        if (tStart && tEnd && restValue !== '') {
-            const startArr = tStart.split(':');
-            const endArr = tEnd.split(':');
-            let startMins = parseInt(startArr[0]) * 60 + parseInt(startArr[1]);
-            let endMins = parseInt(endArr[0]) * 60 + parseInt(endArr[1]);
+        if (sHour !== '' && sMin !== '' && eHour !== '' && eMin !== '' && restValue !== '') {
+            let startMins = parseInt(sHour) * 60 + parseInt(sMin);
+            let endMins = parseInt(eHour) * 60 + parseInt(eMin);
 
+            // 자정을 넘기는 경우 처리
             if (endMins < startMins) endMins += 24 * 60; 
             
-            const workHours = (endMins - startMins) / 60;
+            // 총 회사에 머문 시간과 실제 근로시간 계산
+            const totalMins = endMins - startMins;
             const restMins = parseInt(restValue);
+            const workMins = totalMins - restMins;
+            const workHours = workMins / 60;
 
-            if (workHours >= 8 && restMins < 60) {
+            if (workHours > 8) {
+                setStatus('status-time', 'red', `연소근로자는 1일 최대 8시간(연장근로 포함)까지만 일할 수 있습니다. (현재: ${workHours.toFixed(1)}시간)`);
+            } else if (workHours >= 8 && restMins < 60) {
                 setStatus('status-time', 'red', '8시간 이상 근무 시 60분 이상의 휴게시간이 필요합니다.');
             } else if (workHours >= 4 && restMins < 30) {
                 setStatus('status-time', 'red', '4시간 이상 근무 시 30분 이상의 휴게시간이 필요합니다.');
@@ -348,7 +359,7 @@
                 passedChecks++;
             }
         } else {
-            setStatus('status-time', 'yellow', '근로시간 및 휴게시간이 제대로 입력되지 않았습니다.');
+            setStatus('status-time', 'yellow', '출퇴근 시간과 휴게시간을 정확히 숫자로 입력하세요.');
         }
 
         // 4. 시급
@@ -376,7 +387,7 @@
             setStatus('status-ins', 'red', '4대 사회보험(고용·산재·국민·건강)에 모두 가입 체크해야 합니다.');
         }
 
-        // 7. 교부 및 기타 확인 (신규 추가)
+        // 7. 교부 및 기타 확인
         const chkConfirm = document.getElementById('chk-confirm').checked;
         if(chkConfirm) {
             setStatus('status-confirm', 'green', '계약서 교부 및 기타 사항 숙지 완료'); passedChecks++;
@@ -388,7 +399,7 @@
         const sEmp = document.getElementById('sign-employer').value;
         const sWork = document.getElementById('sign-employee').value;
         if(sEmp.trim() !== '' && sWork.trim() !== '') {
-            setStatus('status-sign', 'green', '사용자(고용주)/근로자 서명 완료'); passedChecks++;
+            setStatus('status-sign', 'green', '사용자/근로자 서명 완료'); passedChecks++;
         } else {
             setStatus('status-sign', 'yellow', '하단 서명란에 이름을 타이핑하여 서명을 완료해주세요.');
         }
