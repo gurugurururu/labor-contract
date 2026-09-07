@@ -10,8 +10,8 @@
         * { box-sizing: border-box; }
         body { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; color: #333; }
         
-        /* 첫 화면 (안내 페이지) 스타일 */
-        #intro-screen { max-width: 800px; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        /* 첫 화면 (안내 페이지) */
+        #intro-screen { max-width: 850px; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         #intro-screen h1 { color: #1a1a1a; border-bottom: 2px solid #1a1a1a; padding-bottom: 10px; margin-bottom: 30px; text-align: left; }
         .info-card { background: #f8f9fa; border-radius: 10px; padding: 20px 30px; margin-bottom: 20px; display: flex; align-items: center; gap: 20px; }
         .info-card h3 { color: #0056b3; margin-top: 0; font-size: 18px; }
@@ -20,14 +20,13 @@
         .btn-start { display: block; width: 100%; padding: 15px; background: #0056b3; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 30px; }
         .btn-start:hover { background: #004494; }
 
-        /* 메인 앱 레이아웃 (초기에는 숨김) */
-        #main-app { display: none; flex-direction: row; gap: 20px; max-width: 1200px; margin: 0 auto; align-items: flex-start; padding-bottom: 120px; }
-        @media (max-width: 900px) { #main-app { flex-direction: column; } }
+        /* 메인 앱 레이아웃 */
+        #main-app { display: none; flex-direction: column; gap: 20px; max-width: 850px; margin: 0 auto; align-items: center; padding-bottom: 40px; }
 
-        /* 왼쪽: 근로계약서 작성 영역 */
-        .contract-section { flex: 2; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: relative; width: 100%; }
-        .contract-section h1 { text-align: center; font-size: 24px; margin-bottom: 5px; border: none; }
-        .subtitle { text-align: center; font-size: 14px; color: #666; margin-bottom: 30px; border-bottom: 2px solid #222; padding-bottom: 20px; }
+        /* 계약서 작성 영역 */
+        .contract-section { background: white; padding: 50px 40px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: relative; width: 100%; }
+        .contract-section h1 { text-align: center; font-size: 26px; margin-bottom: 5px; border: none; }
+        .subtitle { text-align: center; font-size: 14px; color: #666; margin-bottom: 40px; border-bottom: 2px solid #222; padding-bottom: 20px; }
         
         .form-group { margin-bottom: 25px; line-height: 1.8; font-size: 16px; }
         input[type="text"], input[type="number"], input[type="date"], input[type="time"] { 
@@ -38,59 +37,74 @@
         }
         input[type="checkbox"] { transform: scale(1.3); margin-right: 8px; accent-color: #4a90e2; }
         
-        .input-inline { display: inline-block; background: #f8f9fa; border: 1px solid #e1e4e8; border-radius: 8px; padding: 15px; width: 100%; margin-bottom: 20px; }
+        .input-inline { display: inline-block; background: #f8f9fa; border: 1px solid #e1e4e8; border-radius: 8px; padding: 15px; width: 100%; margin-bottom: 25px; text-align: center; }
         .full-width { width: 100%; margin-top: 5px; }
 
         .highlight-box { background-color: #fffbeb; border: 2px solid #fde047; border-radius: 12px; padding: 20px; }
         .highlight-box strong { color: #92400e; font-size: 17px; display: flex; align-items: center; gap: 5px; }
-        .gray-box { background-color: #f8f9fa; border-radius: 10px; padding: 18px; font-size: 14px; line-height: 1.7; color: #4b5563; margin-top: 30px; }
+        
+        /* 8번, 9번 회색 박스 수정 (확인 체크박스 추가) */
+        .gray-box { background-color: #f8f9fa; border-radius: 10px; padding: 20px; font-size: 14px; line-height: 1.7; color: #4b5563; margin-top: 30px; display: flex; flex-direction: column; }
+        .gray-box-content { margin-bottom: 15px; }
+        .gray-box-check { border-top: 1px dashed #ccc; padding-top: 15px; text-align: right; }
+        .gray-box-check label { font-size: 16px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; color: #1e3a8a; }
 
-        .signature-box { display: flex; justify-content: space-around; margin-top: 40px; padding-top: 20px; border-top: 1px dashed #ccc; }
-        .signature-box div { text-align: center; font-weight: bold; }
-        .sign-input { width: 120px !important; text-align: center; border: none !important; border-bottom: 2px solid #333 !important; border-radius: 0 !important; background: transparent !important; margin-left: 10px; }
+        .signature-box { display: flex; justify-content: space-around; margin-top: 50px; padding-top: 30px; border-top: 1px dashed #ccc; }
+        .signature-box div { text-align: center; font-weight: bold; font-size: 18px; }
+        .sign-input { width: 150px !important; text-align: center; border: none !important; border-bottom: 2px solid #333 !important; border-radius: 0 !important; background: transparent !important; margin-left: 10px; font-size: 18px !important; font-weight: bold; }
 
-        /* 오른쪽: AI 검수 리포트 사이드바 */
-        .ai-sidebar { flex: 1; background: #1e2532; color: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: 100%; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 15px; }
-        .ai-header { display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #3a4454; padding-bottom: 15px; margin-bottom: 10px; }
-        .ai-header-icon { width: 50px; height: 50px; background: #4a90e2; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; }
-        .ai-header-text h2 { margin: 0; font-size: 18px; color: #fff; }
-        .ai-header-text p { margin: 5px 0 0 0; font-size: 12px; color: #94a3b8; }
-
-        .check-item { padding: 12px 15px; border-radius: 8px; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; font-weight: bold; line-height: 1.4; transition: 0.3s; }
-        .status-red { background: #3f1a24; border: 1px solid #7f1d1d; color: #fca5a5; }
-        .status-yellow { background: #332f21; border: 1px solid #854d0e; color: #fde047; }
-        .status-green { background: #143323; border: 1px solid #14532d; color: #86efac; }
-        .check-icon { font-size: 16px; margin-top: 2px; }
-
-        .progress-container { margin-top: auto; padding-top: 20px; }
-        .progress-header { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px; color: #cbd5e1; }
-        .progress-bar-bg { width: 100%; height: 10px; background: #334155; border-radius: 5px; overflow: hidden; }
-        .progress-bar-fill { height: 100%; background: #3b82f6; width: 0%; transition: width 0.5s ease-in-out; }
-
-        .btn-submit { width: 100%; padding: 15px; background: #3b82f6; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; margin-top: 20px; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; opacity: 0.5; pointer-events: none; }
-        .btn-submit.active { opacity: 1; pointer-events: auto; }
-        .btn-submit.active:hover { background: #2563eb; }
-        .btn-download { width: 100%; padding: 12px; background: transparent; color: #94a3b8; border: 1px solid #475569; border-radius: 8px; font-size: 14px; margin-top: 10px; cursor: pointer; display: none; }
-        .btn-download:hover { background: #334155; color: white; }
-
-        /* 수정된 도장 그래픽 (사이즈 축소 및 멘트 변경) */
-        #stamp { position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%) scale(5); opacity: 0; pointer-events: none; width: 150px; height: 150px; border: 7px solid #e11d48; color: #e11d48; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 18px; font-weight: bold; text-align: center; line-height: 1.1; z-index: 100; letter-spacing: -0.5px; }
-        #stamp span { font-size: 28px; font-weight: 900; margin-top: 3px; }
+        /* 도장 그래픽 */
+        #stamp { position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%) scale(5); opacity: 0; pointer-events: none; width: 160px; height: 160px; border: 7px solid #e11d48; color: #e11d48; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 20px; font-weight: bold; text-align: center; line-height: 1.1; z-index: 100; letter-spacing: -0.5px; }
+        #stamp span { font-size: 32px; font-weight: 900; margin-top: 3px; }
         .stamp-animate { animation: stampIn 0.4s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         @keyframes stampIn { to { transform: translate(-50%, -50%) scale(1) rotate(-15deg); opacity: 0.85; } }
 
-        /* 플로팅 AI 도움말 (초기 숨김) */
+        /* 하단 AI 검수 영역 */
+        .ai-bottom-section { width: 100%; background: #1e2532; color: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 15px; }
+        
+        .btn-request-check { width: 100%; padding: 20px; background: #6366f1; color: white; border: none; border-radius: 10px; font-size: 20px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        .btn-request-check:hover { background: #4f46e5; transform: translateY(-2px); }
+
+        /* 검수 리포트 내용 */
+        #report-content { display: none; flex-direction: column; gap: 15px; margin-top: 10px; border-top: 1px solid #3a4454; padding-top: 20px; }
+        
+        .ai-header { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
+        .ai-header-icon { width: 50px; height: 50px; background: #4a90e2; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; }
+        .ai-header-text h2 { margin: 0; font-size: 20px; color: #fff; }
+        .ai-header-text p { margin: 5px 0 0 0; font-size: 13px; color: #94a3b8; }
+
+        .check-item { padding: 15px 20px; border-radius: 8px; font-size: 15px; display: flex; align-items: flex-start; gap: 12px; font-weight: bold; line-height: 1.4; transition: 0.3s; }
+        .status-red { background: #3f1a24; border: 1px solid #7f1d1d; color: #fca5a5; }
+        .status-yellow { background: #332f21; border: 1px solid #854d0e; color: #fde047; }
+        .status-green { background: #143323; border: 1px solid #14532d; color: #86efac; }
+        .check-icon { font-size: 18px; margin-top: 1px; }
+
+        .progress-container { margin-top: 10px; padding-top: 20px; }
+        .progress-header { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 10px; color: #cbd5e1; font-weight: bold; }
+        .progress-bar-bg { width: 100%; height: 12px; background: #334155; border-radius: 6px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: #3b82f6; width: 0%; transition: width 0.5s ease-in-out; }
+
+        .btn-submit { width: 100%; padding: 18px; background: #3b82f6; color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; margin-top: 20px; cursor: pointer; transition: 0.3s; display: none; justify-content: center; align-items: center; }
+        .btn-submit:hover { background: #2563eb; }
+        .btn-download { width: 100%; padding: 15px; background: transparent; color: #94a3b8; border: 1px solid #475569; border-radius: 10px; font-size: 16px; font-weight: bold; margin-top: 10px; cursor: pointer; display: none; }
+        .btn-download:hover { background: #334155; color: white; }
+
+        /* 플로팅 AI 도움말 */
         #floating-ai { position: fixed; bottom: 20px; left: 20px; display: none; align-items: flex-end; gap: 15px; z-index: 999; pointer-events: none; }
         .ai-char { width: 60px; height: 60px; background: #4a90e2; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .ai-speech { background: white; border: 2px solid #4a90e2; border-radius: 15px; padding: 12px 18px; font-size: 14px; font-weight: bold; color: #1e3a8a; box-shadow: 0 4px 10px rgba(0,0,0,0.15); max-width: 250px; position: relative; margin-bottom: 10px; transition: 0.2s; }
         .ai-speech::after { content: ''; position: absolute; bottom: 10px; left: -10px; border-width: 10px 10px 10px 0; border-style: solid; border-color: transparent #4a90e2 transparent transparent; display: block; width: 0; }
         
+        /* 저작권 표시용 푸터 */
+        .app-footer { margin-top: 20px; text-align: center; color: #888; font-size: 13px; line-height: 1.6; }
+        .app-footer strong { color: #555; }
+
         .hide-on-capture { /* 캡처 시 숨길 클래스 */ }
     </style>
 </head>
 <body>
 
-<!-- 화면 1: 안내 페이지 부활 -->
+<!-- 화면 1: 안내 페이지 -->
 <div id="intro-screen">
     <h1>근로계약서 <span style="font-size: 16px; font-weight: normal; color: #666;">일하기전 반드시!</span></h1>
     
@@ -122,9 +136,9 @@
 </div>
 
 
-<!-- 화면 2: 메인 앱 (초기에는 숨겨짐) -->
+<!-- 화면 2: 메인 앱 -->
 <div id="main-app">
-    <!-- 왼쪽: 계약서 작성 영역 -->
+    <!-- 계약서 작성 영역 -->
     <div class="contract-section" id="contract-paper">
         <h1>연소근로자(18세 미만인 자) 표준근로계약서</h1>
         <div class="subtitle">※ 근로기준법 제66조, 제67조, 제69조 규정을 준수합니다.</div>
@@ -152,17 +166,17 @@
             <strong>4. 소정근로시간 :</strong><br>
             <input type="time" id="time-start" data-tip="청소년은 하루 7시간, 일주일에 35시간을 초과하여 일할 수 없어요!"> 부터 
             <input type="time" id="time-end" data-tip="퇴근 시간을 정확히 적어주세요."> 까지<br>
-            <span style="font-size: 14px; color: #555;">(휴게시간 : <input type="number" id="rest-time" placeholder="60" style="width: 60px; text-align: center;" data-tip="4시간 이상 근무 시 30분, 8시간 이상 시 1시간의 휴게시간이 법적으로 보장됩니다."> 분 부여)</span>
+            <span style="font-size: 15px; color: #555;">(휴게시간 : <input type="number" id="rest-time" placeholder="60" style="width: 60px; text-align: center;" data-tip="4시간 이상 근무 시 30분, 8시간 이상 시 1시간의 휴게시간이 법적으로 보장됩니다."> 분 부여)</span>
         </div>
 
         <div class="form-group">
             <strong>5. 임금 (2026년 기준) :</strong><br>
-            - 시간급 : <input type="number" id="wage" placeholder="0" style="width: 120px; text-align: right;" data-tip="2026년 기준 최저임금은 시간당 10,320원입니다. 청소년도 성인과 똑같이 적용받아요!"> 원<br>
+            - 시간급 : <input type="number" id="wage" placeholder="0" style="width: 130px; text-align: right;" data-tip="2026년 기준 최저임금은 시간당 10,320원입니다. 청소년도 성인과 똑같이 적용받아요!"> 원<br>
         </div>
 
         <div class="form-group highlight-box">
             <strong>👦 6. 연소근로자 필수 제출 서류 (18세 미만 필수) :</strong>
-            <div style="margin-top: 15px; line-height: 2.2; font-size: 15px;">
+            <div style="margin-top: 15px; line-height: 2.2; font-size: 16px;">
                 - 가족관계기록사항에 관한 증명서 제출 여부 : <label><input type="checkbox" id="chk-family" data-tip="청소년은 일하기 위해 가족관계증명서가 꼭 필요해요!"> 제출 완료</label><br>
                 - 친권자(부모님) 또는 후견인의 동의서 구비 여부 : <label><input type="checkbox" id="chk-consent" data-tip="부모님(친권자)의 허락을 받았다는 동의서도 필수입니다!"> 동의서 제출 완료</label>
             </div>
@@ -176,9 +190,17 @@
             <label><input type="checkbox" class="chk-insurance" id="ins-4"> 건강보험</label>
         </div>
 
+        <!-- 8, 9번 항목 기능 개선 (확인함 체크) -->
         <div class="gray-box">
-            <strong>8. 근로계약서 교부 :</strong> 사용자(고용주)는 계약 체결과 동시에 본 계약서를 사본하여 근로자의 교부 요구와 관계없이 근로자에게 교부함 (근로기준법 제17조, 제67조).<br><br>
-            <strong>9. 기타 :</strong> 이 계약에 정함이 없는 사항은 근로기준법령에 의함.
+            <div class="gray-box-content">
+                <strong>8. 근로계약서 교부 :</strong> 사용자(고용주)는 계약 체결과 동시에 본 계약서를 사본하여 근로자의 교부 요구와 관계없이 근로자에게 교부함 (근로기준법 제17조, 제67조).<br><br>
+                <strong>9. 기타 :</strong> 이 계약에 정함이 없는 사항은 근로기준법령에 의함.
+            </div>
+            <div class="gray-box-check">
+                <label>
+                    <input type="checkbox" id="chk-confirm" style="transform: scale(1.4); margin-right: 10px;" data-tip="위 내용을 꼼꼼히 읽었다면 확인 체크를 잊지 마세요!"> 위 내용을 숙지하고 확인하였습니다 (확인함)
+                </label>
+            </div>
         </div>
 
         <div class="signature-box">
@@ -186,40 +208,57 @@
             <div>(근로자) 서명: <input type="text" id="sign-employee" class="sign-input" placeholder="이름 입력" data-tip="여러분의 이름을 타이핑하여 서명을 완료하세요."></div>
         </div>
 
-        <!-- 수정된 도장 그래픽 -->
+        <!-- 도장 그래픽 -->
         <div id="stamp">AI근로감독관<br><span>검수완료</span></div>
     </div>
 
-    <!-- 오른쪽: AI 검수 리포트 -->
-    <div class="ai-sidebar hide-on-capture">
-        <div class="ai-header">
-            <div class="ai-header-icon">🛡️</div>
-            <div class="ai-header-text">
-                <h2>AI 근로감독관 검수 리포트</h2>
-                <p>실시간 조항별 법적 정당성 판단</p>
+    <!-- 하단: AI 검수 리포트 영역 -->
+    <div class="ai-bottom-section hide-on-capture" id="ai-section">
+        
+        <button class="btn-request-check" id="btn-request" onclick="runCheck()">
+            🔍 다 썼어요! AI 근로감독관에게 검수 요청하기
+        </button>
+
+        <!-- 검수 결과 리포트 -->
+        <div id="report-content">
+            <div class="ai-header">
+                <div class="ai-header-icon">🛡️</div>
+                <div class="ai-header-text">
+                    <h2>AI 근로감독관 검수 리포트</h2>
+                    <p>작성하신 계약서의 법적 기준을 확인했습니다.</p>
+                </div>
             </div>
+
+            <!-- 항목 리스트 (총 8개로 증가) -->
+            <div class="check-item status-yellow" id="status-name"><span class="check-icon">⚠️</span><span>사용자(고용주)명과 근로자 성명을 정확히 입력하세요.</span></div>
+            <div class="check-item status-yellow" id="status-detail"><span class="check-icon">⚠️</span><span>근무장소와 상세 업무 내용을 작성해주세요.</span></div>
+            <div class="check-item status-yellow" id="status-time"><span class="check-icon">⚠️</span><span>근로시간 및 휴게시간을 입력하세요.</span></div>
+            <div class="check-item status-red" id="status-wage"><span class="check-icon">🚨</span><span>2026년 최저시급 준수 여부를 확인하세요.</span></div>
+            <div class="check-item status-red" id="status-docs"><span class="check-icon">🚨</span><span>가족관계증명서와 친권자 동의서 여부를 확인하세요.</span></div>
+            <div class="check-item status-red" id="status-ins"><span class="check-icon">🚨</span><span>4대 사회보험 가입을 확인하세요.</span></div>
+            <!-- 새로 추가된 8,9번 확인 리포트 요소 -->
+            <div class="check-item status-yellow" id="status-confirm"><span class="check-icon">⚠️</span><span>계약서 교부 및 기타 사항을 확인해주세요.</span></div>
+            <div class="check-item status-yellow" id="status-sign"><span class="check-icon">⚠️</span><span>하단 서명을 완료해주세요.</span></div>
+
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span>법적 적합도</span>
+                    <span id="progress-text" style="color: #60a5fa;">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+            </div>
+
+            <button class="btn-submit" id="btn-submit" onclick="doStampAndSave()">🎉 완벽합니다! 최종 검수 완료 및 도장 찍기</button>
+            <button class="btn-download" id="btn-download" onclick="downloadImage()">📄 계약서 이미지 다운로드 (제출용)</button>
         </div>
+    </div>
 
-        <div class="check-item status-yellow" id="status-name"><span class="check-icon">⚠️</span><span>사용자(고용주)명과 근로자 성명을 정확히 입력하세요.</span></div>
-        <div class="check-item status-yellow" id="status-detail"><span class="check-icon">⚠️</span><span>근무장소와 상세 업무 내용을 작성해주세요.</span></div>
-        <div class="check-item status-yellow" id="status-time"><span class="check-icon">⚠️</span><span>근로시간 및 휴게시간(4시간당 30분)을 입력하세요.</span></div>
-        <div class="check-item status-red" id="status-wage"><span class="check-icon">🚨</span><span>2026년 최저시급 준수 (10,320원 이상 입력)</span></div>
-        <div class="check-item status-red" id="status-docs"><span class="check-icon">🚨</span><span>18세 미만은 가족관계증명서와 친권자 동의서 제출이 필수입니다!</span></div>
-        <div class="check-item status-red" id="status-ins"><span class="check-icon">🚨</span><span>4대 사회보험(고용·산재·국민연금·건강보험)에 모두 가입 체크해야 합니다.</span></div>
-        <div class="check-item status-yellow" id="status-sign"><span class="check-icon">⚠️</span><span>하단 사용자(고용주)/근로자 인적사항 및 서명을 모두 채워주세요.</span></div>
-
-        <div class="progress-container">
-            <div class="progress-header">
-                <span>법적 적합도</span>
-                <span id="progress-text" style="font-weight: bold; color: #60a5fa;">0%</span>
-            </div>
-            <div class="progress-bar-bg">
-                <div class="progress-bar-fill" id="progress-fill"></div>
-            </div>
-        </div>
-
-        <button class="btn-submit" id="btn-submit" onclick="doStampAndSave()">🔒 AI 최종 검수 및 도장 찍기</button>
-        <button class="btn-download" id="btn-download" onclick="downloadImage()">📄 계약서 이미지 다운로드 (제출용)</button>
+    <!-- 🌟 저작권 표시 푸터 영역 (선생님 & AI 공동 제작) -->
+    <div class="app-footer hide-on-capture">
+        <strong>ⓒ 2026 배곧해솔중학교 교사 황영헌 제작. All rights reserved.</strong><br>
+        본 웹앱은 고용노동부의 자료를 참고하여 청소년 노동 인권 보호를 위한 교육용 목적으로 개발되었습니다.
     </div>
 </div>
 
@@ -230,15 +269,13 @@
 </div>
 
 <script>
-    // 앱 시작 (화면 전환)
+    // 앱 시작
     function startApp() {
         document.getElementById('intro-screen').style.display = 'none';
         document.getElementById('main-app').style.display = 'flex';
         document.getElementById('floating-ai').style.display = 'flex';
-        updateProgress(); // 초기화 업데이트
     }
 
-    // 항목별 말풍선(툴팁) 변경 로직
     const aiMsgBox = document.getElementById('ai-msg');
     const inputs = document.querySelectorAll('input');
     
@@ -251,9 +288,6 @@
                 setTimeout(() => { aiMsgBox.style.transform = 'scale(1)'; }, 100);
             }
         });
-        
-        input.addEventListener('input', updateProgress);
-        input.addEventListener('change', updateProgress);
     });
 
     function setStatus(id, state, message) {
@@ -263,10 +297,13 @@
         el.innerHTML = `<span class="check-icon">${icon}</span><span>${message}</span>`;
     }
 
-    // 실시간 검수 진행도 업데이트
-    function updateProgress() {
+    // [수동 검수 로직]
+    function runCheck() {
+        const reportContent = document.getElementById('report-content');
+        reportContent.style.display = 'flex';
+        
         let passedChecks = 0;
-        const totalChecks = 7;
+        const totalChecks = 8; // 총 항목 7개 -> 8개로 변경
 
         // 1. 이름
         const emp = document.getElementById('employer').value;
@@ -274,7 +311,7 @@
         if(emp.trim() !== '' && worker.trim() !== '') {
             setStatus('status-name', 'green', '사용자(고용주) 및 근로자 성명 입력 완료'); passedChecks++;
         } else {
-            setStatus('status-name', 'yellow', '사용자(고용주)명과 근로자 성명을 정확히 입력하세요.');
+            setStatus('status-name', 'yellow', '사용자(고용주)명과 근로자 성명이 비어있습니다.');
         }
 
         // 2. 장소/업무
@@ -283,10 +320,10 @@
         if(loc.trim() !== '' && task.trim() !== '') {
             setStatus('status-detail', 'green', '근무장소 및 업무 내용 입력 완료'); passedChecks++;
         } else {
-            setStatus('status-detail', 'yellow', '근무장소와 상세 업무 내용을 작성해주세요.');
+            setStatus('status-detail', 'yellow', '근무장소 또는 업무 내용이 비어있습니다.');
         }
 
-        // 3. 근로시간 및 휴게시간 (법적 기준 알고리즘 추가)
+        // 3. 근로시간 및 휴게시간
         const tStart = document.getElementById('time-start').value;
         const tEnd = document.getElementById('time-end').value;
         const restValue = document.getElementById('rest-time').value;
@@ -297,27 +334,21 @@
             let startMins = parseInt(startArr[0]) * 60 + parseInt(startArr[1]);
             let endMins = parseInt(endArr[0]) * 60 + parseInt(endArr[1]);
 
-            // 자정을 넘기는 경우 처리
             if (endMins < startMins) endMins += 24 * 60; 
             
             const workHours = (endMins - startMins) / 60;
             const restMins = parseInt(restValue);
 
-            // 8시간 이상 근무 시 60분 이상 필수
             if (workHours >= 8 && restMins < 60) {
                 setStatus('status-time', 'red', '8시간 이상 근무 시 60분 이상의 휴게시간이 필요합니다.');
-            } 
-            // 4시간 이상 근무 시 30분 이상 필수
-            else if (workHours >= 4 && restMins < 30) {
+            } else if (workHours >= 4 && restMins < 30) {
                 setStatus('status-time', 'red', '4시간 이상 근무 시 30분 이상의 휴게시간이 필요합니다.');
-            } 
-            // 조건 충족 시
-            else {
+            } else {
                 setStatus('status-time', 'green', '근로시간 및 휴게시간 기준 충족 완료');
                 passedChecks++;
             }
         } else {
-            setStatus('status-time', 'yellow', '근로시간 및 휴게시간(4시간당 30분)을 입력하세요.');
+            setStatus('status-time', 'yellow', '근로시간 및 휴게시간이 제대로 입력되지 않았습니다.');
         }
 
         // 4. 시급
@@ -325,7 +356,7 @@
         if(wage >= 10320) {
             setStatus('status-wage', 'green', '2026년 최저시급 준수 (10,320원 이상)'); passedChecks++;
         } else {
-            setStatus('status-wage', 'red', '2026년 최저시급 준수 (10,320원 이상 입력)');
+            setStatus('status-wage', 'red', `시급 미달입니다! 현재: ${wage}원 (기준: 10,320원 이상)`);
         }
 
         // 5. 서류
@@ -334,7 +365,7 @@
         if(chkFam && chkCon) {
             setStatus('status-docs', 'green', '가족관계증명서 및 친권자 동의서 확인 완료'); passedChecks++;
         } else {
-            setStatus('status-docs', 'red', '18세 미만은 가족관계증명서와 친권자 동의서 제출이 필수입니다!');
+            setStatus('status-docs', 'red', '18세 미만은 가족관계증명서와 친권자 동의서 체크가 필수입니다!');
         }
 
         // 6. 4대보험
@@ -345,13 +376,21 @@
             setStatus('status-ins', 'red', '4대 사회보험(고용·산재·국민·건강)에 모두 가입 체크해야 합니다.');
         }
 
-        // 7. 서명
+        // 7. 교부 및 기타 확인 (신규 추가)
+        const chkConfirm = document.getElementById('chk-confirm').checked;
+        if(chkConfirm) {
+            setStatus('status-confirm', 'green', '계약서 교부 및 기타 사항 숙지 완료'); passedChecks++;
+        } else {
+            setStatus('status-confirm', 'red', '8번, 9번 항목 하단의 \'확인함\'에 체크해주세요.');
+        }
+
+        // 8. 서명
         const sEmp = document.getElementById('sign-employer').value;
         const sWork = document.getElementById('sign-employee').value;
         if(sEmp.trim() !== '' && sWork.trim() !== '') {
             setStatus('status-sign', 'green', '사용자(고용주)/근로자 서명 완료'); passedChecks++;
         } else {
-            setStatus('status-sign', 'yellow', '하단 사용자(고용주)/근로자 인적사항 및 서명을 모두 채워주세요.');
+            setStatus('status-sign', 'yellow', '하단 서명란에 이름을 타이핑하여 서명을 완료해주세요.');
         }
 
         // 진행률 게이지 업데이트
@@ -360,13 +399,22 @@
         document.getElementById('progress-text').innerText = percent + '%';
 
         const submitBtn = document.getElementById('btn-submit');
+        const reqBtn = document.getElementById('btn-request');
+        
+        // 100% 통과 시
         if(percent === 100) {
-            submitBtn.classList.add('active');
-            submitBtn.innerText = '🎉 AI 최종 검수 및 도장 찍기';
-            aiMsgBox.innerHTML = "훌륭해요! 모든 법적 기준을 통과했어요.<br>이제 최종 검수 버튼을 눌러주세요!";
+            submitBtn.style.display = 'flex';
+            reqBtn.innerText = "✅ 검수 통과 완료!";
+            reqBtn.style.backgroundColor = "#10b981"; 
+            aiMsgBox.innerHTML = "훌륭해요! 모든 법적 기준을 통과했어요.<br>이제 아래 '도장 찍기' 버튼을 눌러주세요!";
         } else {
-            submitBtn.classList.remove('active');
-            submitBtn.innerText = '🔒 AI 최종 검수 및 도장 찍기 (진행중)';
+            submitBtn.style.display = 'none'; 
+            reqBtn.innerText = "🔄 수정 후 다시 검수 요청하기";
+            reqBtn.style.backgroundColor = "#f59e0b"; 
+            aiMsgBox.innerHTML = "앗, 아직 부족한 부분이 있어요.<br>위로 올라가서 빨간색/노란색 항목을 고쳐주세요!";
+            
+            reqBtn.style.transform = 'translateY(2px)';
+            setTimeout(() => { reqBtn.style.transform = 'translateY(0)'; }, 200);
         }
     }
 
@@ -385,6 +433,7 @@
     }
 
     function downloadImage() {
+        // 이미지 저장 시 불필요한 UI(검수 리포트, 푸터 등) 숨기기
         const hideElements = document.querySelectorAll('.hide-on-capture');
         hideElements.forEach(el => el.style.opacity = '0');
 
@@ -399,6 +448,7 @@
             link.click();
             document.body.removeChild(link);
             
+            // 캡처 후 UI 복구
             hideElements.forEach(el => el.style.opacity = '1');
         });
     }
